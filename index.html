@@ -34,6 +34,31 @@
   <p id="status"></p>
 
   <script>
+
+const typeSelect = document.getElementById('type');
+    const categorySelect = document.getElementById('category');
+    const statusText = document.getElementById('status');
+
+    const categories = {
+      Credit: ["Salary", "Deposit"],
+      Debit: ["Grocery", "Wireless", "Wifi", "Restaurant", "OTT", "Tickets", "Misc"]
+    };
+
+    function updateCategoryOptions() {
+      const selectedType = typeSelect.value;
+      categorySelect.innerHTML = '';
+      categories[selectedType].forEach(cat => {
+        const opt = document.createElement('option');
+        opt.value = cat;
+        opt.textContent = cat;
+        categorySelect.appendChild(opt);
+      });
+    }
+
+    typeSelect.addEventListener('change', updateCategoryOptions);
+    updateCategoryOptions(); // initialize
+
+    
     const scriptURL = "https://script.google.com/macros/s/AKfycby9u14fRGP11BhWbedCF6-hjWFI6Kaolvv3acH9pqOpNf7jiH4SGtQg7msyV8JLCw/exec"; // paste your actual URL
 
 function submitForm() {
